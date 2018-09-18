@@ -2,7 +2,10 @@ import { ComponentClass } from 'react';
 import { connect } from '@tarojs/redux';
 import Taro, { Component, Config } from '@tarojs/taro';
 import { View, Button, Text, Form, Input } from '@tarojs/components'
+import { fetchMusicsAsyncActionCreator } from '../../actions/search';
+
 interface SearchBarProps {
+  searchMusic:typeof fetchMusicsAsyncActionCreator
 }
 interface SearchBarStates {
   searchInput:string;
@@ -43,7 +46,7 @@ class SearchBar extends Component<SearchBarProps, SearchBarStates> {
       return;
     }
     // this.props.changeNavIndex(1);
-    // this.props.fetchMusic({name: this.state.searchInput, page: 1, pagesize: 20});
+    this.props.searchMusic({name: this.state.searchInput, page: 1, pagesize: 20});
   }
 
   // 点击input框时
@@ -73,8 +76,11 @@ function map_states_to_props(state) {
   return {
   };
 }
-function map_dispatch_to_props() {
+function map_dispatch_to_props(dispatch) {
   return {
+    searchMusic(query) {
+      dispatch(fetchMusicsAsyncActionCreator(query))
+    },
   };
 }
-export default SearchBar as ComponentClass<SearchBarProps, SearchBarStates>
+export default SearchBar as ComponentClass<{},{}>

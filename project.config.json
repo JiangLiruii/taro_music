@@ -1,6 +1,6 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "myApp",
+	"projectname": "taro_music",
 	"description": "react_music",
 	"appid": "touristappid",
 	"setting": {

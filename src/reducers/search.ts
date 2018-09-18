@@ -1,5 +1,6 @@
-import { FETCH_MUSICS, CHANGE_STATE, CHANGE_LOAD_STATE, ADD_FAVO_MUSIC_LIST, DELETE_FROM_FAVO_MUSIC, CHANGE_END_STATE } from '../constants/counter'
+import { FETCH_MUSICS, CHANGE_STATE, CHANGE_LOAD_STATE, ADD_FAVO_MUSIC_LIST, DELETE_FROM_FAVO_MUSIC, CHANGE_END_STATE } from '../constants/music'
 import { SongInfo } from './song_single'
+import Taro from "@tarojs/taro";
 
 export interface Query {
   name:string;
@@ -13,16 +14,15 @@ export interface SongsState {
   favo_song_list:SongInfo[];
   end:boolean;
 }
-
 const INITIAL_STATE:SongsState = {
   songs_list: [],
   currentMusicState: {name:'', page:1, pagesize:20},
   isLoading: false,
-  favo_song_list: JSON.parse(window.localStorage.getItem('favo_song_list') || '') || [],
+  favo_song_list: Taro.getStorageSync('favo_song_list') && JSON.parse(Taro.getStorageSync('favo_song_list')),
   end: false,
 };
 
-export default function counter (state = INITIAL_STATE, action) {
+export default function search (state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_MUSICS:
       let origin = JSON.parse(JSON.stringify(state.songs_list));
