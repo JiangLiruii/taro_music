@@ -1,0 +1,40 @@
+.search {
+
+}
+.inputTag {
+  flex: 0 0 10%;
+  border: 1px solid;
+  padding: 0 10px;
+  margin-right: 10px;
+}
+.submit_button {
+  flex: 0 0 10%;
+  font-size: 30px;
+}
+.search_form {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.error_input {
+  color: #ff4d00a8 !important;
+}
+
+@keyframes shake {
+  0% {left: -10;};
+  50% {left: 0;};
+  100% {left: 10};
+}
+
+.flex-wrp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-item {
+  // flex-grow: 1;
+}
